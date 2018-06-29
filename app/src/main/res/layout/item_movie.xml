@@ -36,4 +36,5 @@
         android:layout_toEndOf="@+id/ivPoster"
         android:layout_toRightOf="@+id/ivPoster"
         android:text="Movie overview" />
+
 </RelativeLayout>

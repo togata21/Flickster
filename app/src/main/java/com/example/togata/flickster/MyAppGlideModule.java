@@ -1,4 +1,4 @@
-package com.example.togata.flickster.models;
+package com.example.togata.flickster;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;

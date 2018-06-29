@@ -1,37 +1,15 @@
 package com.example.togata.flickster;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.example.togata.flickster.models.Config;
-import com.example.togata.flickster.models.Movie;
-
-import org.parceler.Parcels;
-
-import java.util.ArrayList;
-
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
-
 /**
- * Created by togata on 6/27/18.
+ * Created by togata on 6/28/18.
  */
 
-
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+public class ExpansionScreenAdapter{/*} extends BaseAdapter{
     ArrayList<Movie> movies;
     Config config;
     Context context;
-    //private static RecyclerViewClickListener itemListener;
 
-
-    public MovieAdapter(ArrayList<Movie> param){
+    public ExpansionScreenAdapter(ArrayList<Movie> param){
         movies = param;
     }
 
@@ -48,7 +26,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ExpansionScreenAdapter.ViewHolder holder, int position) {
         Movie movie = movies.get(position);
         holder.tvTitle.setText(movie.getTitle());
         holder.tvOverview.setText(movie.getOverview());
@@ -81,26 +59,35 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
 
 
+
+
+
+
+
     }
 
-    public ArrayList<Movie> getMovies() {
-        return movies;
-    }
 
-    public Config getConfig() {
-        return config;
-    }
-
-    public Context getContext() {
-        return context;
+    @Override
+    public int getCount() {
+        return 0;
     }
 
     @Override
-    public int getItemCount() {
-        return movies.size();
+    public Object getItem(int position) {
+        return null;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return null;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView ivPoster;
         TextView tvTitle;
@@ -113,32 +100,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             ivBackdrop = (ImageView) itemView.findViewById(R.id.ivBackdrop);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
             tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            int position = getAdapterPosition();
-            // make sure the position is valid, i.e. actually exists in the view
-            if (position != RecyclerView.NO_POSITION) {
-                // get the movie at the position, this won't work if the class is static
-                Movie movie = movies.get(position);
-                // create intent for the new activity
-                Intent intent = new Intent(context, ExpansionScreenActivity.class);
-                // serialize the movie using parceler, use its short name as a key
-                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
-                intent.putExtra("config", Parcels.wrap(config));
-                //intent.putExtra("context", Parcels.wrap(context));
-                // show the activity
-                context.startActivity(intent);
-            }
-
-
         }
     }
-
-
-
-
+    */
 
 }

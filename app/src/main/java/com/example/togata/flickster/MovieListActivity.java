@@ -1,10 +1,12 @@
 package com.example.togata.flickster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.togata.flickster.models.Config;
@@ -60,10 +62,6 @@ public class MovieListActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     config = new Config(response);
-                    /*JSONObject images = response.getJSONObject("images");
-                    imageBaseUrl = images.getString("secure_base_url");
-                    JSONArray array = images.getJSONArray("poster_sizes"); //use value at array index 3 or size w342
-                    posterSize = array.optString(3, "w342");*/
                     Log.i(TAG, String.format("Loaded configuration with imageBaseUrl %s and posterSize %s", config.getImageBaseUrl(), config.getPosterSize()));
                     adapter.setConfig(config);
 
@@ -75,7 +73,7 @@ public class MovieListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                logError("Failed gettign configuration", throwable, true);
+                logError("Failed getting configuration", throwable, true);
             }
         });
         getNowPlaying();
@@ -118,5 +116,12 @@ public class MovieListActivity extends AppCompatActivity {
         if (alertUser){
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void changeScreen(View v, int position){
+        Intent intent = new Intent(v.getContext(), ExpansionScreenActivity.class);
+        String imageUrl = config.getImageUrl(config.getPosterSize(), movieList.get(position).getPosterPath());
+        intent.putExtra("imageUrl", imageUrl);
+        startActivityForResult(intent, 0);
     }
 }
