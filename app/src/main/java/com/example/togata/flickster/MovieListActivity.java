@@ -1,6 +1,7 @@
 package com.example.togata.flickster;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -123,5 +124,12 @@ public class MovieListActivity extends AppCompatActivity {
         String imageUrl = config.getImageUrl(config.getPosterSize(), movieList.get(position).getPosterPath());
         intent.putExtra("imageUrl", imageUrl);
         startActivityForResult(intent, 0);
+    }
+
+    public void buyTickets(View v){
+        Uri uri = Uri.parse("https://www.fandango.com/"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+
     }
 }

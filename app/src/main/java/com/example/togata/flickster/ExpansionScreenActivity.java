@@ -1,6 +1,7 @@
 package com.example.togata.flickster;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -75,6 +76,13 @@ public class ExpansionScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(v.getContext(), MovieListActivity.class);
         startActivityForResult(intent, 0);
 
+
+    }
+
+    public void buyTickets(View v){
+        Uri uri = Uri.parse("https://www.fandango.com/"); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
 
     }
 
